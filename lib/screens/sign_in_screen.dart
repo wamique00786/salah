@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:salah/screens/dashboard_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -16,7 +17,7 @@ class SignInScreen extends StatelessWidget {
               Icon(Icons.mosque, size: 80, color: Colors.white),
               SizedBox(height: 20),
               Text(
-                'Welcome to Namaz Tracker',
+                'Welcome to Salah Tracker',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -47,7 +48,12 @@ class SignInScreen extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     // Navigate to the main dashboard or home screen
-                    Navigator.pushReplacementNamed(context, '/DashboardScreen');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DashboardScreen(),
+                      ),
+                    );
                   },
                   child: Text(
                     'Skip',

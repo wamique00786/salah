@@ -1,8 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:salah/screens/qaza_namaz_screen.dart';
 
-class DashBoardScreen extends StatelessWidget {
+class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -16,7 +17,7 @@ class DashBoardScreen extends StatelessWidget {
                 children: [
                   _buildHeader(size),
                   SizedBox(height: size.height * 0.02),
-                  _buildFeatureIcons(size),
+                  _buildFeatureIcons(context, size),
                   SizedBox(height: size.height * 0.02),
                   _buildPrayerTimes(size),
                 ],
@@ -82,7 +83,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeatureIcons(Size size) {
+  Widget _buildFeatureIcons(BuildContext context, Size size) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
       child: Row(
@@ -91,7 +92,15 @@ class DashBoardScreen extends StatelessWidget {
           _featureIcon(Icons.explore, 'Qibla', size),
           _featureIcon(Icons.mosque, 'Nearby Masjid', size),
           _featureIcon(Icons.menu_book, 'Duas', size),
-          _featureIcon(Icons.history, 'Qaza', size),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => QazaNamazScreen()),
+              );
+            },
+            child: _featureIcon(Icons.history, 'Qaza', size),
+          ),
         ],
       ),
     );
